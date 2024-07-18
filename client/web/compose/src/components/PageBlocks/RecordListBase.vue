@@ -161,9 +161,9 @@
                       <span
                         class="text-primary font-weight-bold"
                       >
-                        {{ !f.value.start ? 'NULL' : '' }}
-                        AND
-                        {{ !f.value.end ? 'NULL' : '' }}
+                        {{ !f.value.start ? $t('recordList.filter.conditions.null') : '' }}
+                        {{ $t('recordList.filter.conditions.and') }}
+                        {{ !f.value.end ? $t('recordList.filter.conditions.null') : '' }}
                       </span>
                       <field-viewer
                         value-only
@@ -189,7 +189,7 @@
                     v-else
                     class="text-primary font-weight-bold"
                   >
-                    NULL
+                    {{ $t('recordList.filter.conditions.null') }}
                   </span>
 
                   <b-button
@@ -913,7 +913,18 @@ export default {
       recordsPerPage: undefined,
 
       customConfiguredFields: [],
-      formatActiveFilterOperator,
+      formatActiveFilterOperator: formatActiveFilterOperator({
+        equal: this.$t('recordList.filter.operatorLabels.equal'),
+        notEqual: this.$t('recordList.filter.operatorLabels.notEqual'),
+        in: this.$t('recordList.filter.operatorLabel.ins'),
+        notIn: this.$t('recordList.filter.operatorLabels.notIn'),
+        greaterThan: this.$t('recordList.filter.operatorLabels.greaterThan'),
+        lessThan: this.$t('recordList.filter.operatorLabels.lessThan'),
+        like: this.$t('recordList.filter.operatorLabels.like'),
+        notLike: this.$t('recordList.filter.operatorLabels.notLike'),
+        between: this.$t('recordList.filter.operatorLabels.between'),
+        notBetween: this.$t('recordList.filter.operatorLabels.notBetween'),
+      }),
       isBetweenOperator,
     }
   },
