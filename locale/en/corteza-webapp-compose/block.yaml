@@ -369,8 +369,9 @@ recordList:
     conditions:
       and: AND
       or: OR
-      nil: "NULL"
+    nil: "NULL"
     operatorLabels:
+      is: is
       equal: is equal
       notEqual: is not equal
       in: contains

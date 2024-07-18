@@ -222,23 +222,21 @@ export function isFieldInFilter (fieldName, filter = '') {
   return filterCases.some(filterCase => filter.includes(filterCase))
 }
 
-export function formatActiveFilterOperator (labels = {}) {
-  return (op) => {
-    const operators = {
-      '=': labels.equal,
-      '!=': labels.notEqual,
-      'IN': labels.in,
-      'NOT IN': labels.notIn,
-      '>': labels.greaterThan,
-      '<': labels.lessThan,
-      'LIKE': labels.like,
-      'NOT LIKE': labels.notLike,
-      'BETWEEN': labels.between,
-      'NOT BETWEEN': labels.notBetween,
-    }
-
-    return operators[op] || 'IS'
+export function formatActiveFilterOperator (op) {
+  const operators = {
+    '=': 'equal',
+    '!=': 'notEqual',
+    'IN': 'in',
+    'NOT IN': 'notIn',
+    '>': 'greaterThan',
+    '<': 'lessThan',
+    'LIKE': 'like',
+    'NOT LIKE': 'notLike',
+    'BETWEEN': 'between',
+    'NOT BETWEEN': 'notBetween',
   }
+
+  return operators[op] || 'is'
 }
 
 export function isBetweenOperator (op) {
