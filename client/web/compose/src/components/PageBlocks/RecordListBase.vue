@@ -151,36 +151,44 @@
                   <template v-if="f.value">
                     <template v-if="isBetweenOperator(f.operator)">
                       <field-viewer
+                        v-if="f.value.start"
                         value-only
                         :field="f.field"
                         :record="f.record[0]"
                         :module="recordListModule"
                         :namespace="namespace"
-                        class="font-weight-bold text-primary active-filter-item"
+                        class="font-weight-bold text-primary"
                       />
+
                       <span
+                        v-else
                         class="text-primary font-weight-bold"
                       >
                         {{ !f.value.start ? $t('recordList.filter.nil') : '' }}
                       </span>
+
                       <span
                         class="text-primary text-lowercase"
                       >
                         {{ $t('recordList.filter.conditions.and') }}
                       </span>
-                      <span
-                        class="text-primary font-weight-bold"
-                      >
-                        {{ !f.value.end ? $t('recordList.filter.nil') : '' }}
-                      </span>
+
                       <field-viewer
+                        v-if="f.value.end"
                         value-only
                         :field="f.field"
                         :record="f.record[1]"
                         :module="recordListModule"
                         :namespace="namespace"
-                        class="font-weight-bold text-primary active-filter-item"
+                        class="font-weight-bold text-primary"
                       />
+
+                      <span
+                        v-else
+                        class="text-primary font-weight-bold"
+                      >
+                        {{ !f.value.end ? $t('recordList.filter.nil') : '' }}
+                      </span>
                     </template>
 
                     <field-viewer
@@ -190,14 +198,15 @@
                       :record="f.record"
                       :module="recordListModule"
                       :namespace="namespace"
-                      class="font-weight-bold text-primary active-filter-item"
+                      class="font-weight-bold text-primary"
                     />
                   </template>
+
                   <span
                     v-else
                     class="text-primary font-weight-bold"
                   >
-                    {{ $t('recordList.filter.conditions.nil') }}
+                    {{ $t('recordList.filter.nil') }}
                   </span>
 
                   <b-button

@@ -366,10 +366,10 @@ recordList:
     addField: Add new filter field
     byValue: Filter records based on field value
     addFilterToPreset: Save as preset
+    nil: 'NULL'
     conditions:
       and: AND
       or: OR
-    nil: "NULL"
     operatorLabels:
       is: is
       equal: is equal
